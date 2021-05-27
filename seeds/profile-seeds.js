@@ -2,19 +2,19 @@ const { Profile } = require('../models');
 
 const profileData = [
     {
-        profile_gender: 'F',
-        profile_age: 24,
-        profile_height: 175,
-        profile_weight: 50,
-        profile_eye_color: green,
-        profile_hair_color: red,
-        profile_size: 4,
-        profile_complexion: tan,
-        profile_speak_french: true,
-        profile_speak_spanish: false,
-        profile_speak_italian: false,
-        profile_speak_mandarin: false,
-        profile_skills: 'horseback riding'
+        gender: 'F',
+        age: 24,
+        height: 175,
+        weight: 50,
+        eye_colour: "green",
+        hair_colour: "red",
+        size: 4,
+        complexion: "tan",
+        speak_french: true,
+        speak_spanish: false,
+        speak_italian: false,
+        speak_mandarin: false,
+        skills: 'Horseback Riding'
     }
 ];
 const seedProfile = () => Profile.bulkCreate(profileData);

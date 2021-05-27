@@ -6,9 +6,15 @@ class Role extends Model {}
 
 //define tabel columns and configuration
 Role.init(
-    {
-        name: {
-            type: DataType.STRING(10)
-        }
-    }
-)
+	{
+		role_name: {
+			type: DataType.STRING(10),
+		},
+	},
+	{
+		sequelize,
+		freezeTableName: true,
+		underscored: true,
+		modelName: "role",
+	}
+);
