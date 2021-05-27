@@ -4,11 +4,18 @@ const sequelize = require("../config/connection");
 //create the Role model
 class Role extends Model {}
 
-//define tabel columns and configuration
+//define table columns and configuration
 Role.init(
 	{
+		id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			primaryKey: true,
+			autoIncrement: true,
+		},
 		role_name: {
-			type: DataType.STRING(10),
+			type: DataTypes.STRING(10),
+			allowNull: false,
 		},
 	},
 	{
@@ -18,3 +25,5 @@ Role.init(
 		modelName: "role",
 	}
 );
+
+module.exports = Role;

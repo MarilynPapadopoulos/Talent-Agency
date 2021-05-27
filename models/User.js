@@ -41,13 +41,6 @@ User.init(
 				key: "id",
 			},
 		},
-		profile_id: {
-			type: DataTypes.INTEGER,
-			references: {
-				model: "profile",
-				key: "id",
-			},
-		},
 	},
 	{
 		sequelize,
@@ -56,3 +49,5 @@ User.init(
 		modelName: "user",
 	}
 );
+
+module.exports = User;

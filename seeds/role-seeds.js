@@ -1,14 +1,14 @@
-const { Role } = require('../models');
+const { Role } = require("../models");
 
 const roleData = [
-    {
-        role_name: "agent"
-    },
-    {
-        role_name: "talent"
-    }
-]
+	{
+		role_name: "agent",
+	},
+	{
+		role_name: "talent",
+	},
+];
 
-const seedRole = () => Role.bulkCreate(roleData);
+const seedRoles = () => Role.bulkCreate(roleData);
 
-module.exports = seedRole;
+module.exports = seedRoles;

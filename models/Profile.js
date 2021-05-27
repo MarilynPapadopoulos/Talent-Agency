@@ -61,6 +61,13 @@ Profile.init(
 		skills: {
 			type: DataTypes.STRING(100),
 		},
+		user_id: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: "user",
+				key: "id",
+			},
+		},
 	},
 	{
 		sequelize,
@@ -69,3 +76,5 @@ Profile.init(
 		modelName: "profile",
 	}
 );
+
+module.exports = Profile;
