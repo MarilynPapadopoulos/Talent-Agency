@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // --- uncomment when connection.js is set up ---
-// const sequelize = require("./config/connection");
+const sequelize = require("./config/connection");
 
 // --- uncomment when sessions are set up ---
 // const SequelizeStore = require("connect-session-sequelize")(session.Store)

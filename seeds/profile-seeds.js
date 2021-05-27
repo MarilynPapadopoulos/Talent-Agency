@@ -1,0 +1,55 @@
+const { Profile } = require("../models");
+
+const profileData = [
+	{
+		gender: "F",
+		age: 24,
+		height: 175,
+		weight: 50,
+		eye_colour: "green",
+		hair_colour: "red",
+		size: 4,
+		complexion: "tan",
+		speak_french: true,
+		speak_spanish: false,
+		speak_italian: false,
+		speak_mandarin: false,
+		skills: "Horseback Riding",
+		user_id: 1,
+	},
+	{
+		gender: "M",
+		age: 28,
+		height: 185,
+		weight: 75,
+		eye_colour: "blue",
+		hair_colour: "brown",
+		size: 10,
+		complexion: "pale",
+		speak_french: false,
+		speak_spanish: true,
+		speak_italian: false,
+		speak_mandarin: true,
+		skills: "Water Polo",
+		user_id: 2,
+	},
+	{
+		gender: "M",
+		age: 32,
+		height: 180,
+		weight: 65,
+		eye_colour: "brown",
+		hair_colour: "black",
+		size: 15,
+		complexion: "dark",
+		speak_french: false,
+		speak_spanish: false,
+		speak_italian: false,
+		speak_mandarin: true,
+		skills: "Underwater Welding",
+		user_id: 4,
+	},
+];
+const seedProfiles = () => Profile.bulkCreate(profileData);
+
+module.exports = seedProfiles;
