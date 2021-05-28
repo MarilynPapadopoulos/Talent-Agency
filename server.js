@@ -30,19 +30,17 @@ const sequelize = require("./config/connection");
 
 // app.use(session(sess));
 
-// --- uncomment when handlebars is set up ---
 // require express-handlebars
-// const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({});
 
 // set up express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// --- uncomment when handlebars is set up ---
 // set up express handlebars
-// app.engine("handlebars", hbs.engine);
-// app.set("view engine", "handlebars");
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 app.use(require("./controllers/"));
 
