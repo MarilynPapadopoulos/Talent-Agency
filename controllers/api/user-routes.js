@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User, Profile, Role } = require("../../models");
-// add authentication here for routes
+// add authentication middleware here for routes
 
 // GET all users - /api/users/
 // this may not be needed - if not it can be removed
