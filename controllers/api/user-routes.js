@@ -107,7 +107,15 @@ router.get("/:id", (req, res) => {
 			id: req.params.id,
 		},
 	})
-		.then((dbUserData) => res.status(200).json(dbUserData))
+		.then((dbUserData) => {
+			// if no user is returned, send a 404 status
+			if (!dbUserData) {
+				res.status(404).json({ message: "No user found with this ID!" });
+				return;
+			}
+			// else, return the user data
+			res.status(200).json(dbUserData);
+		})
 		.catch((err) => {
 			console.log(err);
 			res.status(500).json(err);
@@ -127,7 +135,32 @@ router.post("/", (req, res) => {
 		role_id,
 	})
 		.then((dbUserData) => {
-			// need to add the role and logged in status to the session here
+			//--- need to add the role and logged in status to the session here ---
+			res.status(200).json(dbUserData);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
+// --- need to add routes for login and logout ---
+
+// PUT update a talent user - /api/users/:id
+// this request will be sent from the talent update profile page
+router.put("/:id", (req, res) => {
+	User.update(req.body, {
+		where: {
+			id: req.params.id,
+		},
+	})
+		.then((dbUserData) => {
+			// if no user is returned, send a 404 status
+			if (!dbUserData) {
+				res.status(404).json({ message: "No user found with this ID!" });
+				return;
+			}
+			// else, return the user data
 			res.status(200).json(dbUserData);
 		})
 		.catch((err) => {
