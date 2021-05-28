@@ -144,12 +144,35 @@ router.post("/", (req, res) => {
 		});
 });
 
-// --- need to add routes for login and logout ---
+// --- need to add POST routes for login and logout ---
 
 // PUT update a talent user - /api/users/:id
 // this request will be sent from the talent update profile page
 router.put("/:id", (req, res) => {
 	User.update(req.body, {
+		where: {
+			id: req.params.id,
+		},
+	})
+		.then((dbUserData) => {
+			// if no user is returned, send a 404 status
+			if (!dbUserData) {
+				res.status(404).json({ message: "No user found with this ID!" });
+				return;
+			}
+			// else, return the user data
+			res.status(200).json(dbUserData);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
+// DELETE route to remove a user by id - /api/users/:id
+// this request will be sent from the talent dashboard page
+router.delete("/:id", (req, res) => {
+	User.destroy({
 		where: {
 			id: req.params.id,
 		},
