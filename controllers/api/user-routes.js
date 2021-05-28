@@ -114,4 +114,26 @@ router.get("/:id", (req, res) => {
 		});
 });
 
+// POST create a new user - /api/users
+// note: this does not include the creation of a profile for talent users - that will be in the profile-routes.js file
+router.post("/", (req, res) => {
+	const { first_name, last_name, email, password, role_id } = req.body;
+
+	User.create({
+		first_name,
+		last_name,
+		email,
+		password,
+		role_id,
+	})
+		.then((dbUserData) => {
+			// need to add the role and logged in status to the session here
+			res.status(200).json(dbUserData);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
 module.exports = router;
