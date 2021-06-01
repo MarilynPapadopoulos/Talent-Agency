@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mate+SC&display=swap" rel="stylesheet">
     <!--materialize CDN-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./assets/css/login-style.css">
+    <link rel="stylesheet" href="./assets/css/signup-style.css">
     <title>TLNT</title>
 </head>
 
@@ -22,20 +22,49 @@
         <div class="row">
             <form class="col s12">
                 <img src="./assets/images/logo.png" alt="TLNT logo">
+                <h4>Create Your Account</h4>
+                </h1>
+                <!--text inputs-->
+                <div class="row first-fields">
+                    <div class="input-field col s6">
+                        <input id="first_name" type="text" class="validate">
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="text" class="validate">
+                        <label for="last_name">Last Name</label>
+                    </div>
+                </div>
                 <div class="row">
+                    <!--text inputs-->
                     <div class="input-field col s12">
                         <input id="email" type="email" class="validate">
                         <label for="email" class="label">Email</label>
                         <div class="row">
-                            <div class="input-field col s12">
-                                <input id="password" type="password" class="validate">
-                                <label for="password" class="label">Password</label>
+                            <div class="input-field col s6">
+                                <input id="password" type="text" class="validate">
+                                <label for="password">Password</label>
                             </div>
+                            <div class="input-field col s6">
+                                <input id="conpassword" type="text" class="validate">
+                                <label for="conpassword">Confirm Password</label>
+                            </div>
+                            <!--checkboxes-->
+                            <p>
+                                <label class="check">
+                                    <input type="checkbox" class="navy" />
+                                    <span>Talent</span>
+                                </label>
+                                <label class="check">
+                                    <input type="checkbox" class="navy" />
+                                    <span>Agent</span>
+                                </label>
+                            </p>
                         </div>
+                        <!--button-->
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button class="btn btn-primary" type="button">Login</button>
+                            <button class="btn btn-primary" type="button">Sign-up</button>
                         </div>
-                        <div class="signup">Not a Member?<a href="#">Signup</a></div>
                     </div>
                 </div>
             </form>
