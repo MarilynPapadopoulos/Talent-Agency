@@ -1,19 +1,43 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-  img {
-    height: 75px;
-    margin-top: 10px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-  }
-
-  .welcome
-{
-    padding:50px 50px 50px 50px;
 }
+
+.main
+{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  
+  
+}
+.welcome
+{
+  padding:50px 100px 100px ;
+  
+}
+
+
+
+.btn
+{
+  height:150px;
+  width:150px;
+ 
+}
+
+label {
+	font-family:'Times New Roman', Times, serif;
+	display:inline-block;
+  color:midnightblue;
+  font-size: 1.4vw;
+}
+
+input[type="radio"] {
+  width: 1em;
+  z-index: -1;
+}
+
