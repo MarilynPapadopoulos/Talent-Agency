@@ -1,7 +1,14 @@
 const router = require("express").Router();
-const apiRoutes = require("./api");
 
+// import routes from folder locations
+const apiRoutes = require("./api");
+const homeRoutes = require("./home-routes");
+const agentRoutes = require("./agent-dashboard-routes");
+
+// set route paths
 router.use("/api", apiRoutes);
+router.use("/", homeRoutes);
+router.use("/agent", agentRoutes);
 
 router.use((req, res) => {
 	res.send("<h1>Wrong Route!</h1>");
