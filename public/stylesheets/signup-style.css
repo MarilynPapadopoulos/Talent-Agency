@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/signup.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/*container style*/
+.mb-3 {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  height: 450px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/*logo style*/
+img {
+  height: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+/*text input style and spacing*/
+.input-field label {
+  color: black;
+}
+
+.row {
+  margin-bottom: 0px;
+}
+
+/*card title style*/
+h4 {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin: 0rem;
+  font-family: "Mate SC", serif;
+}
+
+/*checkbox spacing*/
+.check {
+  padding: 20px;
+  margin-left: 50px;
+}
+
+/*button style*/
+.btn {
+  background-color: #0f222d;
+}
+
+.btn:hover {
+  background-color: navy;
+}
+
+/* label focus color */
+.input-field input[type="text"]:focus + label {
+  color: black;
+}
+
+/*materialize style*/
+/* label focus color */
+.input-field input:focus + label {
+  color: navy !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+  border-bottom: 1px solid navy !important;
+  box-shadow: 0 1px 0 0 navy !important;
+}
+
+/* label underline focus color */
+.input-field input[type="text"]:focus {
+  border-bottom: 1px solid black;
+  box-shadow: 0 1px 0 0 black;
+}
+/* valid color */
+.input-field input[type="text"].valid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* invalid color */
+.input-field input[type="text"].invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #000;
+}
+
+/*footer style*/
+footer {
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+}

@@ -1,1 +1,56 @@
-<h1>This will be the signup page.</h1>
+    <link rel="stylesheet" href="/stylesheets/signup-style.css">
+
+<div class="mb-3">
+    <div class="row">
+        <form class="col s12">
+            <img src="/images/logo.png" alt="TLNT logo">
+            <h4>Create Your Account</h4>
+            </h1>
+            <!--text inputs-->
+            <div class="row first-fields">
+                <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <!--text inputs-->
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email" class="label">Email</label>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="password" type="text" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="conpassword" type="text" class="validate">
+                            <label for="conpassword">Confirm Password</label>
+                        </div>
+                        <!--checkboxes-->
+                        <p>
+                            <label class="check">
+                                <input id="talent" type="checkbox" class="navy" />
+                                <span>Talent</span>
+                            </label>
+                            <label class="check">
+                                <input id="agent" type="checkbox" class="navy" />
+                                <span>Agent</span>
+                            </label>
+                        </p>
+                    </div>
+                    <!--button-->
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary" id="signup-button" type="button">Sign-up</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="javascript/signup.js"></script>
