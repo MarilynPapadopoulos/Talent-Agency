@@ -10,6 +10,8 @@ router.get("/", (req, res) => {
 	}).then((dbUserData) => {
 		// here will be the logic to filter the results by filter criteria
 	});
+
+	res.render("agent-dashboard");
 });
 
 module.exports = router;

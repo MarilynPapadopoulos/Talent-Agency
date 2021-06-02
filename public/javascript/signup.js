@@ -6,7 +6,16 @@ async function signupHandler(event) {
 	const first_name = document.querySelector("#first_name").value.trim();
 	const last_name = document.querySelector("#last_name").value.trim();
 	const email = document.querySelector("#email").value.trim();
+
+	// check that both passwords entered match
 	const password = document.querySelector("#password").value.trim();
+	const confirm = document.querySelector("#conpassword").value.trim();
+
+	if (password !== confirm) {
+		alert("Please make sure the entered passwords match!");
+		return;
+	}
+
 	// set role as either talent or agent
 	const talentChecked = document.querySelector("#talent").checked;
 	const agentChecked = document.querySelector("#agent").checked;
@@ -46,8 +55,12 @@ async function signupHandler(event) {
 		});
 
 		if (response.ok) {
-			// redirect here
-			console.log("RESPONSE OK!");
+			// if response is good, redirect to the talent management page
+			if (role_id === 2) {
+				document.location.replace(`/talent`);
+			} else {
+				document.location.replace("/agent");
+			}
 		} else {
 			alert(response.statusText);
 		}
