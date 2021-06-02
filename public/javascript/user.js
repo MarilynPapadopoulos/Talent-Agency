@@ -1,10 +1,8 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('.modal');
-//     var instances = M.Modal.init(elems);
-//   });
+
 
 function signupFormHandler(event) {
     event.preventDefault();
+    console.log('click');
 
     const email = document.querySelector('#signup-email').value.trim();
     const password = document.querySelector('#signup-password').value.trim();
@@ -50,8 +48,8 @@ function signupFormHandler(event) {
 function signinFormHandler(event) {
     event.preventDefault();
 
-    const email = document.querySelector('#signup-email').value.trim();
-    const password = document.querySelector('#signup-password').value.trim();
+    const email = document.querySelector('#signin-email').value.trim();
+    const password = document.querySelector('#signin-password').value.trim();
 
     console.log( email, password);
 
