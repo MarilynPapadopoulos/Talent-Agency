@@ -98,6 +98,123 @@ router.get("/talent", async (req, res) => {
 			res.status(500).json(err);
 		});
 });
+// GET filtered talent - /api/users/filtered
+// this will be used on the agent landing page to populate the page with all talent after filtering
+router.get("/filtered", async (req, res) => {
+	// get the id for "talent" in the Roles table
+	let talent_id;
+	await Role.findOne({
+		where: { role_name: "talent" },
+	})
+		.then((dbRoleData) => {
+			talent_id = dbRoleData.id;
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+	// access User model and run .findAll() method
+	User.findAll({
+		attributes: { exclude: ["password"] },
+		where: {
+			role_id: talent_id,
+		},
+		include: [
+			{
+				// include the role name
+				model: Role,
+				attributes: ["role_name"],
+			},
+			{
+				// include all profile details - if the user is an agent, it will be null
+				model: Profile,
+				attributes: [
+					"gender",
+					"age",
+					"height",
+					"weight",
+					"eye_colour",
+					"hair_colour",
+					"size",
+					"complexion",
+					"speak_french",
+					"speak_spanish",
+					"speak_italian",
+					"speak_mandarin",
+					"skills",
+				],
+			},
+		],
+	})
+		.then((dbUserData) => {
+			const result = dbUserData.filter((user) => {
+				if(req.body.gender !== null) {
+					if (
+						user.dataValues.profile.dataValues.gender !==
+						req.body.gender
+					) {
+						return false;
+					}
+				}
+				if(req.body.height !== null) {
+					if (
+						user.dataValues.profile.dataValues.height !==
+						req.body.height
+					) {
+						return false;
+					}
+				}
+				if(req.body.weight !== null) {
+					if(
+						user.dataValues.profile.dataValues.weight !==
+						req.body.weight
+					) {
+						return false;
+					}
+				}
+				if (req.body.eye_colour !== null) {
+					if (
+						user.dataValues.profile.dataValues.eye_colour !==
+						req.body.eye_colour
+					) {
+						return false;
+					}
+				}
+				if(req.body.complexion !== null) {
+					if(
+						user.dataValues.profile.dataValues.complexion !==
+						req.body.complexion
+					) {
+						return false;
+					}
+				}
+				if(req.body.hair_colour !== null) {
+					if(
+						user.dataValues.profile.dataValues.hair_colour !==
+						req.body.hair_colour
+					) {
+						return false;
+					}
+				}
+				if(req.body.skills !== null) {
+					if(
+						user.dataValues.profile.dataValues.skills !==
+						req.body.skills
+					) {
+						return false;
+					}
+				}
+				return true;
+			});
+				console.log(result);
+
+				res.status(200).json(result);
+		})
+		.catch((err) => {
+		console.log(err);
+		res.status(500).json(err);
+	});
+});
 
 // GET one user by id - /api/users/:id
 router.get("/:id", (req, res) => {
