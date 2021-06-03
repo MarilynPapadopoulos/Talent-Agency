@@ -14,10 +14,15 @@
     <!--materialize CDN-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/login-style.css">
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" />
+
     <title>TLNT</title>
 </head>
 
 <body>
+
     <div class="mb-3">
         <div class="row">
             <form class="col s12">
@@ -33,7 +38,9 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button class="btn btn-primary" type="button">Login</button>
+
+
+                            <button class="btn btn-primary" id="signin-form" type="submit">Login</button>
                         </div>
                         <div class="signup">Not a Member?<a href="#">Signup</a></div>
                     </div>
@@ -50,6 +57,21 @@
         crossorigin="anonymous"></script>
     <!-- Materialize script link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+      <!--Firebase script link-->
+    <script src="../public/javascript/fireBase.js"></script>
+ 
+    
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+
+
 </body>
 
 
