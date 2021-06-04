@@ -2,6 +2,15 @@ const router = require("express").Router();
 const { User, Profile, Role } = require("../../models");
 // add authentication middleware here for routes
 
+// check session
+router.get("/session", (req, res) => {
+	if (req.session) {
+		res.json(req.session);
+	} else {
+		res.json("there is no session");
+	}
+});
+
 // GET all users - /api/users/
 // this may not be needed - if not it can be removed
 router.get("/", (req, res) => {
@@ -149,27 +158,26 @@ router.get("/filtered", async (req, res) => {
 		.then((dbUserData) => {
 			//console.log(dbUserData);
 			const result = dbUserData.filter((user) => {
-				console.log(user.dataValues.profile.dataValues)
-				let keepUser = false
-				const entries = Object.entries(user.dataValues.profile.dataValues)
-				console.log(entries)
-				for (let i =0; i < entries.length; i++) {
-					const currentEntry= entries[i]
-					if(req.body[currentEntry[0]] === currentEntry[1]) {
+				console.log(user.dataValues.profile.dataValues);
+				let keepUser = false;
+				const entries = Object.entries(user.dataValues.profile.dataValues);
+				console.log(entries);
+				for (let i = 0; i < entries.length; i++) {
+					const currentEntry = entries[i];
+					if (req.body[currentEntry[0]] === currentEntry[1]) {
 						keepUser = true;
 					}
-	
 				}
 				return keepUser;
 			});
-				console.log(result);
+			console.log(result);
 
-				res.status(200).json(result);
+			res.status(200).json(result);
 		})
 		.catch((err) => {
-		console.log(err);
-		res.status(500).json(err);
-	});
+			console.log(err);
+			res.status(500).json(err);
+		});
 });
 
 // GET one user by id - /api/users/:id
@@ -208,8 +216,16 @@ router.post("/", (req, res) => {
 		role_id,
 	})
 		.then((dbUserData) => {
-			//--- need to add the role and logged in status to the session here ---
-			res.status(200).json(dbUserData);
+			// create session on user signup
+			req.session.save(() => {
+				req.session.user_id = dbUserData.id;
+				req.session.role_id = dbUserData.role_id;
+				req.session.loggedIn = true;
+
+				res.status(200).json(req.session.role_id);
+			});
+
+			// res.status(200).json(dbUserData);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -217,36 +233,37 @@ router.post("/", (req, res) => {
 		});
 });
 
-// POST routes for login and logout 
-router.post('/login', (req, res) => {
+// POST routes for login and logout
+router.post("/login", (req, res) => {
 	User.findOne({
 		where: {
-			email: req.body.email
-		}
+			email: req.body.email,
+		},
+		attributes: { exclude: ["password"] },
 	})
-	.then((dbUserData) => {
-		if(!dbUserData) {
-			res.status(400).json({ message: 'No user with that email address' });
-			return;
-		}
-		const validPassword = dbUserData.checkPassword(req.body.password);
+		.then((dbUserData) => {
+			if (!dbUserData) {
+				res.status(400).json({ message: "No user with that email address" });
+				return;
+			}
 
-		if(!validPassword) {
-			res.status(400).json({ message: 'Incorrect Password' });
-			return;
-		}
-		req.session.save(() => {
-			req.session.user_id = dbUserData.id;
-			req.session.username = dbUserData.username;
-			req.session.loggedIn = true;
+			req.session.save(() => {
+				req.session.user_id = dbUserData.id;
+				req.session.role_id = dbUserData.role_id;
+				req.session.loggedIn = true;
 
-			res.json({ user: dbUserData, message: 'You are now logged In' });
+				res.status(200).json(req.session.role_id);
+			});
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
 		});
-	});
 });
-//Logout route with session 
-router.post('/logout', (req, res) => {
-	if(req.session.loggedIn) {
+
+//Logout route with session
+router.post("/logout", (req, res) => {
+	if (req.session.loggedIn) {
 		req.session.destroy(() => {
 			res.status(204).end();
 		});
