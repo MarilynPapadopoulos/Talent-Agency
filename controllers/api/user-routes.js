@@ -144,7 +144,43 @@ router.post("/", (req, res) => {
 		});
 });
 
-// --- need to add POST routes for login and logout ---
+// POST routes for login and logout 
+router.post('/login', (req, res) => {
+	User.findOne({
+		where: {
+			email: req.body.email
+		}
+	})
+	.then((dbUserData) => {
+		if(!dbUserData) {
+			res.status(400).json({ message: 'No user with that email address' });
+			return;
+		}
+		const validPassword = dbUserData.checkPassword(req.body.password);
+
+		if(!validPassword) {
+			res.status(400).json({ message: 'Incorrect Password' });
+			return;
+		}
+		req.session.save(() => {
+			req.session.user_id = dbUserData.id;
+			req.session.username = dbUserData.username;
+			req.session.loggedIn = true;
+
+			res.json({ user: dbUserData, message: 'You are now logged In' });
+		});
+	});
+});
+//Logout route with session 
+router.post('/logout', (req, res) => {
+	if(req.session.loggedIn) {
+		req.session.destroy(() => {
+			res.status(204).end();
+		});
+	} else {
+		res.status(404).end();
+	}
+});
 
 // PUT update a talent user - /api/users/:id
 // this request will be sent from the talent update profile page
