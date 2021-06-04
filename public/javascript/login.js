@@ -24,24 +24,33 @@ async function loginHandler(event) {
 			return;
 		});
 
-	// this is a signout route for testing
-	// await firebase
-	// 	.auth()
-	// 	.signOut()
-	// 	.then(() => {
-	// 		console.log("Sign out successful");
-	// 	})
-	// 	.catch((err) => {
-	// 		console.log(err);
-	// 		console.log("Sign out not successful");
-	// 	});
-
 	var user = firebase.auth().currentUser;
+	console.log(user);
 
 	if (user) {
 		console.log("Signed in Successfully");
 	} else {
 		console.log("did not work");
+		return;
+	}
+
+	// send request to api login route to create a session
+	const response = await fetch("/api/users/login", {
+		method: "post",
+		body: JSON.stringify({
+			email: email,
+		}),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+
+	// check the response status
+	if (response.ok) {
+		console.log("success");
+		document.location.replace("/redirect");
+	} else {
+		alert(response.statusText);
 	}
 }
 

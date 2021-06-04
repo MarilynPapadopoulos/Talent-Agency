@@ -15,6 +15,22 @@ async function logoutHandler(event) {
 		});
 
 	// destroy the session
+	const response = fetch("/api/users/logout", {
+		method: "post",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+
+	// check the response status
+	if (response.ok) {
+		document.location.replace("/login");
+	} else {
+		document.location.replace("/login");
+		// alert(response.statusText);
+	}
 }
 
-// need an event listener on the logout button
+document
+	.querySelector("#signout-button")
+	.addEventListener("click", logoutHandler);
