@@ -147,64 +147,20 @@ router.get("/filtered", async (req, res) => {
 		],
 	})
 		.then((dbUserData) => {
+			//console.log(dbUserData);
 			const result = dbUserData.filter((user) => {
-				if(req.body.gender !== null) {
-					if (
-						user.dataValues.profile.dataValues.gender !==
-						req.body.gender
-					) {
-						return false;
+				console.log(user.dataValues.profile.dataValues)
+				let keepUser = false
+				const entries = Object.entries(user.dataValues.profile.dataValues)
+				console.log(entries)
+				for (let i =0; i < entries.length; i++) {
+					const currentEntry= entries[i]
+					if(req.body[currentEntry[0]] === currentEntry[1]) {
+						keepUser = true;
 					}
+	
 				}
-				if(req.body.height !== null) {
-					if (
-						user.dataValues.profile.dataValues.height !==
-						req.body.height
-					) {
-						return false;
-					}
-				}
-				if(req.body.weight !== null) {
-					if(
-						user.dataValues.profile.dataValues.weight !==
-						req.body.weight
-					) {
-						return false;
-					}
-				}
-				if (req.body.eye_colour !== null) {
-					if (
-						user.dataValues.profile.dataValues.eye_colour !==
-						req.body.eye_colour
-					) {
-						return false;
-					}
-				}
-				if(req.body.complexion !== null) {
-					if(
-						user.dataValues.profile.dataValues.complexion !==
-						req.body.complexion
-					) {
-						return false;
-					}
-				}
-				if(req.body.hair_colour !== null) {
-					if(
-						user.dataValues.profile.dataValues.hair_colour !==
-						req.body.hair_colour
-					) {
-						return false;
-					}
-				}
-				if(req.body.skills !== null) {
-					if(
-						user.dataValues.profile.dataValues.skills !==
-						req.body.skills
-					) {
-						return false;
-					}
-				}
-				return true;
+				return keepUser;
 			});
 				console.log(result);
 
