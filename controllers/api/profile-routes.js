@@ -19,7 +19,6 @@ router.post("/", (req, res) => {
 		speak_italian,
 		speak_mandarin,
 		skills,
-		user_id,
 	} = req.body;
 
 	Profile.create({
@@ -36,7 +35,7 @@ router.post("/", (req, res) => {
 		speak_italian,
 		speak_mandarin,
 		skills,
-		user_id,
+		user_id: req.session.user_id,
 	})
 		.then((dbProfileData) => {
 			//--- need to add the role and logged in status to the session here ---

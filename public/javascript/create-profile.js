@@ -53,47 +53,45 @@ async function createProfileHandler(event) {
 		return;
 	}
 
-	// WE NEED THE ID FROM THE SESSION TO SEND THIS REQUEST
 	// only execute logic if relevant inputs are filled in
-	// if (
-	// 	gender &&
-	// 	age &&
-	// 	height !== "" &&
-	// 	weight !== "" &&
-	// 	hair_colour !== "" &&
-	// 	size !== "" &&
-	// 	complexion !== "" &&
-	// 	skills !== ""
-	// ) {
-	// 	const response = await fetch("/api/profiles", {
-	// 		method: "post",
-	// 		body: JSON.stringify({
-	// 			gender,
-	// 			age,
-	// 			height,
-	// 			weight,
-	// 			eye_colour,
-	// 			hair_colour,
-	// 			size,
-	// 			complexion,
-	// 			speak_french,
-	// 			speak_spanish,
-	// 			speak_italian,
-	// 			speak_mandarin,
-	// 			skills,
-	// 			user_id,
-	// 		}),
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 		},
-	// 	});
+	if (
+		gender &&
+		age &&
+		height !== "" &&
+		weight !== "" &&
+		hair_colour !== "" &&
+		size !== "" &&
+		complexion !== "" &&
+		skills !== ""
+	) {
+		const response = await fetch("/api/profiles", {
+			method: "post",
+			body: JSON.stringify({
+				gender,
+				age,
+				height,
+				weight,
+				eye_colour,
+				hair_colour,
+				size,
+				complexion,
+				speak_french,
+				speak_spanish,
+				speak_italian,
+				speak_mandarin,
+				skills,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
 
-	// 	if (response.ok) {
-	// 		document.location.replace("/talent");
-	// 	} else {
-	// 		alert(response.statusText);
-	// 	}
-	// }
+		if (response.ok) {
+			document.location.replace("/talent");
+		} else {
+			alert(response.statusText);
+		}
+	}
 
 	// temporary redirect since this function is not currently linked to the db
 	document.location.replace("/talent");

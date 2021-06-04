@@ -38,6 +38,19 @@ async function signupHandler(event) {
 		return;
 	}
 
+	// create the account in firebase
+
+	await firebase
+		.auth()
+		.createUserWithEmailAndPassword(email, password)
+		.then((userCredential) => {
+			var user = userCredential.user;
+		})
+		.catch((error) => {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+		});
+
 	// if all fields have been populated, send the POST request to create the account
 	if (first_name && last_name && email && password) {
 		const response = await fetch("/api/users", {
@@ -57,9 +70,9 @@ async function signupHandler(event) {
 		if (response.ok) {
 			// if response is good, redirect to the talent management page
 			if (role_id === 2) {
-				document.location.replace(`/create-profile`);
+				document.location.replace("/create-profile");
 			} else {
-				document.location.replace("/agent");
+				document.location.replace("/redirect");
 			}
 		} else {
 			alert(response.statusText);
