@@ -98,6 +98,79 @@ router.get("/talent", async (req, res) => {
 			res.status(500).json(err);
 		});
 });
+// GET filtered talent - /api/users/filtered
+// this will be used on the agent landing page to populate the page with all talent after filtering
+router.get("/filtered", async (req, res) => {
+	// get the id for "talent" in the Roles table
+	let talent_id;
+	await Role.findOne({
+		where: { role_name: "talent" },
+	})
+		.then((dbRoleData) => {
+			talent_id = dbRoleData.id;
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+	// access User model and run .findAll() method
+	User.findAll({
+		attributes: { exclude: ["password"] },
+		where: {
+			role_id: talent_id,
+		},
+		include: [
+			{
+				// include the role name
+				model: Role,
+				attributes: ["role_name"],
+			},
+			{
+				// include all profile details - if the user is an agent, it will be null
+				model: Profile,
+				attributes: [
+					"gender",
+					"age",
+					"height",
+					"weight",
+					"eye_colour",
+					"hair_colour",
+					"size",
+					"complexion",
+					"speak_french",
+					"speak_spanish",
+					"speak_italian",
+					"speak_mandarin",
+					"skills",
+				],
+			},
+		],
+	})
+		.then((dbUserData) => {
+			//console.log(dbUserData);
+			const result = dbUserData.filter((user) => {
+				console.log(user.dataValues.profile.dataValues)
+				let keepUser = false
+				const entries = Object.entries(user.dataValues.profile.dataValues)
+				console.log(entries)
+				for (let i =0; i < entries.length; i++) {
+					const currentEntry= entries[i]
+					if(req.body[currentEntry[0]] === currentEntry[1]) {
+						keepUser = true;
+					}
+	
+				}
+				return keepUser;
+			});
+				console.log(result);
+
+				res.status(200).json(result);
+		})
+		.catch((err) => {
+		console.log(err);
+		res.status(500).json(err);
+	});
+});
 
 // GET one user by id - /api/users/:id
 router.get("/:id", (req, res) => {
@@ -144,7 +217,43 @@ router.post("/", (req, res) => {
 		});
 });
 
-// --- need to add POST routes for login and logout ---
+// POST routes for login and logout 
+router.post('/login', (req, res) => {
+	User.findOne({
+		where: {
+			email: req.body.email
+		}
+	})
+	.then((dbUserData) => {
+		if(!dbUserData) {
+			res.status(400).json({ message: 'No user with that email address' });
+			return;
+		}
+		const validPassword = dbUserData.checkPassword(req.body.password);
+
+		if(!validPassword) {
+			res.status(400).json({ message: 'Incorrect Password' });
+			return;
+		}
+		req.session.save(() => {
+			req.session.user_id = dbUserData.id;
+			req.session.username = dbUserData.username;
+			req.session.loggedIn = true;
+
+			res.json({ user: dbUserData, message: 'You are now logged In' });
+		});
+	});
+});
+//Logout route with session 
+router.post('/logout', (req, res) => {
+	if(req.session.loggedIn) {
+		req.session.destroy(() => {
+			res.status(204).end();
+		});
+	} else {
+		res.status(404).end();
+	}
+});
 
 // PUT update a talent user - /api/users/:id
 // this request will be sent from the talent update profile page
