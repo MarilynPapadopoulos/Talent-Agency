@@ -70,9 +70,9 @@ async function signupHandler(event) {
 		if (response.ok) {
 			// if response is good, redirect to the talent management page
 			if (role_id === 2) {
-				document.location.replace(`/create-profile`);
+				document.location.replace("/create-profile");
 			} else {
-				document.location.replace("/agent");
+				document.location.replace("/redirect");
 			}
 		} else {
 			alert(response.statusText);

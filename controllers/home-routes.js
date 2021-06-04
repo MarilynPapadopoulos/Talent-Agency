@@ -30,11 +30,8 @@ router.get("/signup", (req, res) => {
 
 // show create profile page (for talent users)
 router.get("/create-profile", (req, res) => {
-	// all logic to redirect to dashboard if the user already has a profile
-	if (req.session.loggedIn) {
-		res.redirect("/");
-		return;
-	}
+	// need logic here to prevent users that already have profiles from accessing
+
 	// otherwise, render the profile creation page
 	res.status(200).render("create-profile");
 });

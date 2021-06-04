@@ -216,8 +216,16 @@ router.post("/", (req, res) => {
 		role_id,
 	})
 		.then((dbUserData) => {
-			//--- need to add the role and logged in status to the session here ---
-			res.status(200).json(dbUserData);
+			// create session on user signup
+			req.session.save(() => {
+				req.session.user_id = dbUserData.id;
+				req.session.role_id = dbUserData.role_id;
+				req.session.loggedIn = true;
+
+				res.status(200).json(req.session.role_id);
+			});
+
+			// res.status(200).json(dbUserData);
 		})
 		.catch((err) => {
 			console.log(err);
@@ -242,7 +250,6 @@ router.post("/login", (req, res) => {
 			req.session.save(() => {
 				req.session.user_id = dbUserData.id;
 				req.session.role_id = dbUserData.role_id;
-				req.session.username = dbUserData.username;
 				req.session.loggedIn = true;
 
 				res.status(200).json(req.session.role_id);
