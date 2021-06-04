@@ -4,7 +4,10 @@ const { User, Role, Profile } = require("../models");
 // show login page
 router.get("/login", (req, res) => {
 	// add logic to redirect to dashboard if the user is already logged in
-
+	if(req.session.loggedIn) {
+		res.redirect('/');
+		return;
+	}
 	// otherwise, render the homepage
 	res.status(200).render("login");
 });
@@ -12,7 +15,10 @@ router.get("/login", (req, res) => {
 // show general signup page
 router.get("/signup", (req, res) => {
 	// add logic to redirect to dashboard if the user is already logged in
-
+	if(req.session.loggedIn) {
+		res.redirect('/');
+		return;
+	}
 	// otherwise, render the general signup page
 	res.status(200).render("signup");
 });
@@ -20,7 +26,10 @@ router.get("/signup", (req, res) => {
 // show create profile page (for talent users)
 router.get("/create-profile", (req, res) => {
 	// all logic to redirect to dashboard if the user already has a profile
-
+	if(req.session.loggedIn) {
+		res.redirect('/');
+		return;
+	}
 	// otherwise, render the profile creation page
 	res.status(200).render("create-profile");
 });
