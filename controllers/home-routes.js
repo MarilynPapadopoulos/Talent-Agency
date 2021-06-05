@@ -1,6 +1,11 @@
 const router = require("express").Router();
 const { User, Role, Profile } = require("../models");
 
+router.get("/", (req, res) => {
+	// route users to login
+	res.redirect("/login");
+});
+
 // show login page
 router.get("/login", (req, res) => {
 	// add logic to redirect to dashboard if the user is already logged in
