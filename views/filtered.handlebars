@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="stylesheets/filter-style.css">
+
+<!--filter parameter container-->
+<div class="page-container">
+    <div class="mb-3 filter-container">
+        <img src="images/logo.png" alt="TLNT logo">
+        <button id="signout-button" type="submit">Sign Out</button>
+        <h4>Filters</h4>
+        <!--filter parameters-->
+        <div class="row">
+            <div class="input-field col s12 ">
+                <input id="gender" type="text" class="validate">
+                <label for="gender">Gender</label>
+            </div>
+
+            <div class="input-field col s12 ">
+                <input id="age" type="number" class="validate">
+                <label for="age">Age</label>
+            </div>
+
+            <div class="input-field col s12 ">
+                <input id="height" type="number" class="validate">
+                <label for="height">Height</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="weight" type="number" class="validate">
+                <label for="weight">Weight</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="eye-colour" type="text" class="validate">
+                <label for="eye-colour">Eye Colour</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="hair-colour" type="text" class="validate">
+                <label for="hair-colour">Hair Colour</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="size" type="text" class="validate">
+                <label for="size">Size</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="complexion" type="text" class="validate">
+                <label for="complexion">Complexion</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="user-id" type="text" class="validate">
+                <label for="user-id">User ID</label>
+            </div>
+        </div>
+
+        <dive class="row">
+            <div class="input-field col s12">
+                <input id="skills" type="text" class="validate">
+                <label for="skills">Skills</label>
+            </div>
+            <!--language radios-->
+            <form action="#">
+                <p>
+                    <label class="radio">
+                        <input name="group1" type="radio" checked />
+                        <span>Speaks French</span>
+                    </label>
+
+                    <label class="radio">
+                        <input name="group1" type="radio" checked />
+                        <span>Speaks Spanish</span>
+                    </label>
+
+                    <label class="radio">
+                        <input name="group1" type="radio" checked />
+                        <span>Speaks Italian</span>
+                    </label>
+
+                    <label class="radio">
+                        <input name="group1" type="radio" checked />
+                        <span>Speaks Mandarin</span>
+                    </label>
+                </p>
+            </form>
+            <!--button-->
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="button">Filter</button>
+            </div>
+    </div>
+
+    <!--result container-->
+    <div class="mb-3 filtered">
+        <h4>Results</h4>
+        <div class="row card-container">
+            <!--member cards-->
+            {{#each users as |user|}}
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="images/logo.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{user.first_name}} {{user.last_name}}<i
+                            class="material-icons right"></i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Profile Name<i
+                            class="material-icons right"></i></span>
+                    <p>click link below to email TLNT member</p>
+                    <p><a href="mailto:{{user.email}}">Profile Email</a></p>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+
+</div>
+
+<script src="/javascript/logout.js"></script>

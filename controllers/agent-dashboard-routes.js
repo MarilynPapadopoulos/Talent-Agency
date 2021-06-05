@@ -73,4 +73,84 @@ router.get("/", async (req, res) => {
 		});
 });
 
+// show the filtered dashboard
+router.get("*", async (req, res) => {
+	// get the id for "talent" in the Roles table
+	let talent_id;
+	await Role.findOne({
+		where: { role_name: "talent" },
+	})
+		.then((dbRoleData) => {
+			talent_id = dbRoleData.id;
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+
+	// access User model and run .findAll() method
+	User.findAll({
+		attributes: { exclude: ["password"] },
+		where: {
+			role_id: talent_id,
+		},
+		include: [
+			{
+				// include the role name
+				model: Role,
+				attributes: ["role_name"],
+			},
+			{
+				// include all profile details - if the user is an agent, it will be null
+				model: Profile,
+				attributes: [
+					"gender",
+					"age",
+					"height",
+					"weight",
+					"eye_colour",
+					"hair_colour",
+					"size",
+					"complexion",
+					"speak_french",
+					"speak_spanish",
+					"speak_italian",
+					"speak_mandarin",
+					"skills",
+				],
+			},
+		],
+	})
+		.then((dbUserData) => {
+			const result = dbUserData.filter((user) => {
+				// console.log(user.dataValues.profile.dataValues);
+				let keepUser = false;
+				const entries = Object.entries(user.dataValues.profile.dataValues);
+				console.log(req.query);
+				console.log(entries);
+				for (let i = 0; i < entries.length; i++) {
+					const currentEntry = entries[i];
+					console.log("CURRENT", currentEntry);
+					if (req.query[currentEntry[0]]) {
+						if (req.query[currentEntry[0]] == currentEntry[1]) {
+							console.log("True");
+							keepUser = true;
+						} else {
+							keepUser = false;
+							return keepUser;
+						}
+					}
+				}
+				return keepUser;
+			});
+			console.log(result);
+
+			res.status(200).json(result);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
 module.exports = router;
