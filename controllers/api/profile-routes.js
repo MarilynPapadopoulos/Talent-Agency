@@ -49,12 +49,12 @@ router.post("/", (req, res) => {
 		});
 });
 
-// PUT update a profile - /api/profiles/:id
+// PUT update a profile - /api/profiles/
 // this request will be sent from the talent update profile page
-router.put("/:id", async (req, res) => {
+router.put("/", async (req, res) => {
 	Profile.update(req.body, {
 		where: {
-			user_id: req.params.id,
+			user_id: req.session.user_id,
 		},
 	})
 		.then((dbProfileData) => {

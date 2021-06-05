@@ -18,69 +18,69 @@
         </div>
     </nav>
 
+    {{#checkEqual "test" "test"}}
+    The values are equal
+    {{/checkEqual}}
+
     <div class="row bg-white">
         <div class="col-sm-7">
             <h1 class="text-info"
                 style="font-weight: bold; font-size:2vw; font-Family:Times New Roman; margin-left:6.8vw">Update</h1>
             <form class="form1" style="margin-left:8vw; font-Family:Times New Roman" action="" method="post">
-
-                <!-- <div class="form-group row">
-                    <label for="fname">First Name:</label>
-                    <input type="text" class="form-control col-6" id="fname" placeholder="Enter Firstname" name="fname" required>
-                </div>
-                <div class="form-group row">
-                    <label for="lname">Last Name:</label>
-                    <input type="text" class="form-control col-6" id="lname" placeholder="Enter Lastname" name="lname" required>
-                </div> -->
-
-                {{!-- <div class="form-group row">
-                    <label for="email">Email:</label>
-                    <input type="text" class="form-control col-6" id="email" placeholder="Enter Email" name="email"
-                        required>
-                </div> --}}
                 <div class="form-group">
                     <div class="form-check-inline">
                         <p>Please select your gender:</p>
-                        <input type="radio" class="form-check-input" name="gender" value="male">
+                        <input type="radio" class="form-check-input" name="gender" value="male" {{#checkEqual
+                            profile.gender "male" }} checked {{/checkEqual}}>
                         <label for="gender1" class="form-check-label">
                             Male
                         </label>
-                        <input type="radio" class="form-check-input" name="gender" value="female">
+                        <input type="radio" class="form-check-input" name="gender" value="female" {{#checkEqual
+                            profile.gender "female" }} checked {{/checkEqual}}>
                         <label for="gender2" class="form-check-label">Female
                         </label>
                         <input type="radio" class="form-check-input" name="gender" value="other">
-                        <label for="gender3" class="form-check-label">Other
+                        <label for="gender3" class="form-check-label" {{#checkEqual profile.gender "other" }} checked
+                            {{/checkEqual}}>Other
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <p>Age:</p>
-                    <input type="text" class="form-control col-6" id="age" placeholder="Enter Age" name="age" required>
+                    <input type="text" class="form-control col-6" id="age" placeholder="Enter Age" name="age" required
+                        value="{{profile.age}}">
                 </div>
 
                 <div class="form-group" id="eye-colour">
                     <div class="form-check-inline">
                         <p>Please select your eye color:</p>
-                        <input type="radio" class="form-check-input" id="eyecolor1" name="eyecolor" value="brown">
+                        <input type="radio" class="form-check-input" id="eyecolor1" name="eyecolor" value="brown"
+                            {{#checkEqual profile.eye_colour "brown" }} checked {{/checkEqual}}>
                         <label for="eyecolor1" class="form-check-label">
                             Brown
                         </label>
-                        <input type="radio" class="form-check-input" id="eyecolor2" name="eyecolor" value="hazel">
+                        <input type="radio" class="form-check-input" id="eyecolor2" name="eyecolor" value="hazel"
+                            {{#checkEqual profile.eye_colour "hazel" }} checked {{/checkEqual}}>
                         <label for="eyecolor2" class="form-check-label">Hazel
                         </label>
-                        <input type="radio" class="form-check-input" id="eyecolor3" name="eyecolor" value="blue">
+                        <input type="radio" class="form-check-input" id="eyecolor3" name="eyecolor" value="blue"
+                            {{#checkEqual profile.eye_colour "blue" }} checked {{/checkEqual}}>
                         <label for="eyecolor3" class="form-check-label">Blue
                         </label>
-                        <input type="radio" class="form-check-input" id="eyecolor4" name="eyecolor" value="green">
+                        <input type="radio" class="form-check-input" id="eyecolor4" name="eyecolor" value="green"
+                            {{#checkEqual profile.eye_colour "green" }} checked {{/checkEqual}}>
                         <label for="eyecolor4" class="form-check-label">Green
                         </label>
-                        <input type="radio" class="form-check-input" id="eyecolor5" name="eyecolor" value="gray">
+                        <input type="radio" class="form-check-input" id="eyecolor5" name="eyecolor" value="gray"
+                            {{#checkEqual profile.eye_colour "gray" }} checked {{/checkEqual}}>
                         <label for="eyecolor5" class="form-check-label">Gray
                         </label>
-                        <input type="radio" class="form-check-input" id="eyecolor6" name="eyecolor" value="amber">
+                        <input type="radio" class="form-check-input" id="eyecolor6" name="eyecolor" value="amber"
+                            {{#checkEqual profile.eye_colour "amber" }} checked {{/checkEqual}}>
                         <label for="eyecolor6" class="form-check-label">Amber
                         </label>
-                        <input type="radio" class="form-check-input" id="eyecolor7" name="eyecolor" value="black">
+                        <input type="radio" class="form-check-input" id="eyecolor7" name="eyecolor" value="black"
+                            {{#checkEqual profile.eye_colour "black" }} checked {{/checkEqual}}>
                         <label for="eyecolor7" class="form-check-label">Black
                         </label>
                     </div>
@@ -88,23 +88,27 @@
                 <div class="form-group">
                     <div class="form-check-inline">
                         <p>Languages Spoken</p>
-                        <input type="checkbox" id="french" class="form-check-input" name="language" value="french">
+                        <input type="checkbox" id="french" class="form-check-input" name="language" value="french"
+                            {{#checkEqual profile.speak_french true }} checked {{/checkEqual}}>
                         <label for="french" class="form-check-label">
                             French
                         </label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="checkbox" id="spanish" class="form-check-input" name="language">
+                        <input type="checkbox" id="spanish" class="form-check-input" name="language" {{#checkEqual
+                            profile.speak_spanish true }} checked {{/checkEqual}}>
                         <label for="spanish" class="form-check-label">Spanish
                         </label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="checkbox" id="italian" class="form-check-input" name="language">
+                        <input type="checkbox" id="italian" class="form-check-input" name="language" {{#checkEqual
+                            profile.speak_italian true }} checked {{/checkEqual}}>
                         <label for="italian" class="form-check-label">Italian
                         </label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="checkbox" id="mandarin" class="form-check-input" name="language">
+                        <input type="checkbox" id="mandarin" class="form-check-input" name="language" {{#checkEqual
+                            profile.speak_mandarin true }} checked {{/checkEqual}}>
                         <label for="mandarin" class="form-check-label">Mandarin
                         </label>
                     </div>
@@ -112,38 +116,38 @@
                 <div class="form-group row">
                     <p>Height:</p>
                     <input type="text" class="form-control col-6" id="height" placeholder="Enter Height" name="height"
-                        required>
+                        required value="{{profile.height}}">
                 </div>
                 <div class="form-group row">
                     <label for="weight">Weight:</label>
                     <input type="text" class="form-control col-6" id="weight" placeholder="Enter Weight" name="weight"
-                        required>
+                        required value="{{profile.weight}}">
                 </div>
                 <div class="form-group row">
                     <label for="hair-color">Hair Color</label>
                     <input type="text" class="form-control col-6" id="hair-color" placeholder="Enter Hair Color"
-                        name="hair-color" required>
+                        name="hair-color" required value="{{profile.hair_colour}}">
                 </div>
                 <div class="form-group row">
                     <label for="size">Size:</label>
                     <input type="text" class="form-control col-6" id="size" placeholder="Enter Size" name="size"
-                        required>
+                        required value="{{profile.size}}">
                 </div>
                 <div class="form-group row">
                     <label for="complexion">Complexion</label>
                     <input type="text" class="form-control col-6" id="complexion" placeholder="Enter Complexion"
-                        name="complexion" required>
+                        name="complexion" required value="{{profile.complexion}}">
                 </div>
                 <div class="form-group row">
                     <label for="skills">Skills</label>
                     <input type="text" class="form-control col-6" id="skills" placeholder="Enter your Skills"
-                        name="skills" required>
+                        name="skills" required value="{{profile.skills}}">
                 </div>
                 <div>
-                    <button type="button" id="create-profile-button" class="btn btn-info"
+                    <button type="button" id="update-profile-button" class="btn btn-info"
                         style="margin-left:3em; color:black; font-size:1.5em; font-weight:bold">Submit</button>
                 </div>
             </form>
         </div>
 
-        <script src="/javascript/create-profile.js"></script>
+<script src="/javascript/update-user.js"></script>
