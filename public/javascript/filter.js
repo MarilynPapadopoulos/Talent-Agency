@@ -45,31 +45,36 @@ async function filterHandler(event) {
 		query += `complexion=${complexion}&`;
 	}
 
-	const speaks_french = document.querySelector("#speaks-french").checked;
-	if (speaks_french === true) {
-		query += `speaks_french=true&`;
+	const speak_french = document.querySelector("#speaks-french").checked;
+	if (speak_french === true) {
+		query += `speak_french=true&`;
 	}
 
-	const speaks_spanish = document.querySelector("#speaks-spanish").checked;
-	if (speaks_spanish === true) {
-		query += `speaks_spanish=true&`;
+	const speak_spanish = document.querySelector("#speaks-spanish").checked;
+	if (speak_spanish === true) {
+		query += `speak_spanish=true&`;
 	}
 
-	const speaks_italian = document.querySelector("#speaks-italian").checked;
-	if (speaks_italian === true) {
-		query += `speaks_italian=true&`;
+	const speak_italian = document.querySelector("#speaks-italian").checked;
+	if (speak_italian === true) {
+		query += `speak_italian=true&`;
 	}
 
-	const speaks_mandarin = document.querySelector("#speaks-mandarin").checked;
-	if (speaks_mandarin === true) {
-		query += `speaks_mandarin=true&`;
+	const speak_mandarin = document.querySelector("#speaks-mandarin").checked;
+	if (speak_mandarin === true) {
+		query += `speak_mandarin=true&`;
 	}
 
-	// remove the "&" from the last index of the query string
-	query = query.slice(0, query.length - 1);
+	// if there are no query parameters, redirect to the agent dashboard
+	if (query === "") {
+		document.location.replace("/agent");
+	} else {
+		// remove the "&" from the last index of the query string
+		query = query.slice(0, query.length - 1);
 
-	// route the user to the appropriate route
-	document.location.replace(`/agent/filtered?${query}`);
+		// route the user to the appropriate route
+		document.location.replace(`/agent/filtered?${query}`);
+	}
 }
 
 document
