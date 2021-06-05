@@ -7,7 +7,7 @@
 
     <nav class="navbar navbar-default navbar-expand-lg bg-light" role="navigation">
         <a class="logo" href="index.html">
-            <img src="images/logo.png" class="img-responsive" alt="company logo"
+            <img src="/images/logo.png" class="img-responsive" alt="company logo"
                 style="max-height:3em; margin-top: .1em;"></a>
         <div class="sign-out">
             <form class="form-inline" action="./talent-signup.html">
@@ -35,9 +35,9 @@
                             profile.gender "female" }} checked {{/checkEqual}}>
                         <label for="gender2" class="form-check-label">Female
                         </label>
-                        <input type="radio" class="form-check-input" name="gender" value="other">
-                        <label for="gender3" class="form-check-label" {{#checkEqual profile.gender "other" }} checked
-                            {{/checkEqual}}>Other
+                        <input type="radio" class="form-check-input" name="gender" value="other" {{#checkEqual profile.gender "other" }} checked
+                            {{/checkEqual}}>
+                        <label for="gender3" class="form-check-label">Other
                         </label>
                     </div>
                 </div>

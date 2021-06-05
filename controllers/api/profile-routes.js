@@ -72,4 +72,20 @@ router.put("/", async (req, res) => {
 		});
 });
 
+// DELETE a profile - /api/profiles
+router.delete("/", (req, res) => {
+	Profile.destroy({
+		where: {
+			user_id: req.session.user_id,
+		},
+	})
+		.then((dbProfileData) => {
+			res.json(dbProfileData);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
 module.exports = router;
