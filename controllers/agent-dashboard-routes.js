@@ -122,18 +122,15 @@ router.get("*", async (req, res) => {
 		],
 	})
 		.then((dbUserData) => {
-			const result = dbUserData.filter((user) => {
+			const results = dbUserData.filter((user) => {
 				// console.log(user.dataValues.profile.dataValues);
 				let keepUser = false;
 				const entries = Object.entries(user.dataValues.profile.dataValues);
-				console.log(req.query);
-				console.log(entries);
+				// console.log(entries);
 				for (let i = 0; i < entries.length; i++) {
 					const currentEntry = entries[i];
-					console.log("CURRENT", currentEntry);
 					if (req.query[currentEntry[0]]) {
 						if (req.query[currentEntry[0]] == currentEntry[1]) {
-							console.log("True");
 							keepUser = true;
 						} else {
 							keepUser = false;
@@ -143,9 +140,12 @@ router.get("*", async (req, res) => {
 				}
 				return keepUser;
 			});
-			console.log(result);
+			// console.log(result);
 
-			res.status(200).json(result);
+			// serialize data
+			const users = results.map((user) => user.get({ plain: true }));
+
+			res.render("filtered", { users, filters: req.query });
 		})
 		.catch((err) => {
 			console.log(err);

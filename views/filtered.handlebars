@@ -1,92 +1,98 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link rel="stylesheet" href="stylesheets/filter-style.css">
+<link rel="stylesheet" href="/stylesheets/filter-style.css">
 
 <!--filter parameter container-->
 <div class="page-container">
     <div class="mb-3 filter-container">
-        <img src="images/logo.png" alt="TLNT logo">
+        <img src="/images/logo.png" alt="TLNT logo">
         <button id="signout-button" type="submit">Sign Out</button>
         <h4>Filters</h4>
         <!--filter parameters-->
         <div class="row">
             <div class="input-field col s12 ">
-                <input id="gender" type="text" class="validate">
+                <input id="gender" type="text" class="validate" {{#if filters.gender}} value={{filters.gender}}{{/if}}>
                 <label for="gender">Gender</label>
             </div>
 
             <div class="input-field col s12 ">
-                <input id="age" type="number" class="validate">
+                <input id="age" type="number" class="validate" {{#if filters.age}} value={{filters.age}}{{/if}}>
                 <label for="age">Age</label>
             </div>
 
             <div class="input-field col s12 ">
-                <input id="height" type="number" class="validate">
+                <input id="height" type="number" class="validate" {{#if filters.height}}
+                    value={{filters.height}}{{/if}}>
                 <label for="height">Height</label>
             </div>
 
             <div class="input-field col s12">
-                <input id="weight" type="number" class="validate">
+                <input id="weight" type="number" class="validate" {{#if filters.weight}}
+                    value={{filters.weight}}{{/if}}>
                 <label for="weight">Weight</label>
             </div>
 
             <div class="input-field col s12">
-                <input id="eye-colour" type="text" class="validate">
+                <input id="eye-colour" type="text" class="validate" {{#if filters.eye_colour}}
+                    value={{filters.eye_colour}}{{/if}}>
                 <label for="eye-colour">Eye Colour</label>
             </div>
 
             <div class="input-field col s12">
-                <input id="hair-colour" type="text" class="validate">
+                <input id="hair-colour" type="text" class="validate" {{#if filters.hair_colour}}
+                    value={{filters.hair_colour}}{{/if}}>
                 <label for="hair-colour">Hair Colour</label>
             </div>
 
             <div class="input-field col s12">
-                <input id="size" type="text" class="validate">
+                <input id="size" type="text" class="validate" {{#if filters.size}} value={{filters.size}}{{/if}}>
                 <label for="size">Size</label>
             </div>
 
             <div class="input-field col s12">
-                <input id="complexion" type="text" class="validate">
+                <input id="complexion" type="text" class="validate" {{#if filters.complexion}}
+                    value={{filters.complexion}}{{/if}}>
                 <label for="complexion">Complexion</label>
             </div>
 
-            <div class="input-field col s12">
-                <input id="user-id" type="text" class="validate">
-                <label for="user-id">User ID</label>
-            </div>
         </div>
 
         <dive class="row">
-            <div class="input-field col s12">
+            {{!-- I took this out for now since it is harder to query for values with multiple words --}}
+            {{!-- <div class="input-field col s12">
                 <input id="skills" type="text" class="validate">
                 <label for="skills">Skills</label>
-            </div>
+            </div> --}}
             <!--language radios-->
             <form action="#">
                 <p>
                     <label class="radio">
-                        <input name="group1" type="radio" checked />
+                        <input id="speaks-french" name="group1" type="checkbox" {{#if filters.speaks_french}}
+                            checked{{/if}} />
                         <span>Speaks French</span>
                     </label>
 
                     <label class="radio">
-                        <input name="group1" type="radio" checked />
+                        <input id="speaks-spanish" name="group1" type="checkbox" {{#if filters.speaks_spanish}}
+                            checked{{/if}} />
                         <span>Speaks Spanish</span>
                     </label>
 
                     <label class="radio">
-                        <input name="group1" type="radio" checked />
+                        <input id="speaks-italian" name="group1" type="checkbox" {{#if filters.speaks_italian}}
+                            checked{{/if}} />
                         <span>Speaks Italian</span>
                     </label>
 
                     <label class="radio">
-                        <input name="group1" type="radio" checked />
+                        <input id="speaks-mandarin" name="group1" type="checkbox" {{#if filters.speaks_mandarin}}
+                            checked{{/if}} />
                         <span>Speaks Mandarin</span>
                     </label>
                 </p>
             </form>
             <!--button-->
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button">Filter</button>
+                <button class="btn btn-primary" type="button" id="filter-button">Filter</button>
             </div>
     </div>
 
@@ -98,7 +104,7 @@
             {{#each users as |user|}}
             <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="images/logo.png">
+                    <img class="activator" src="/images/logo.png">
                 </div>
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">{{user.first_name}} {{user.last_name}}<i
@@ -119,3 +125,4 @@
 </div>
 
 <script src="/javascript/logout.js"></script>
+<script src="/javascript/filter.js"></script>
