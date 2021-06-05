@@ -2,6 +2,8 @@ const router = require("express").Router();
 const { User, Profile, Role } = require("../../models");
 // add authentication middleware here for routes
 
+// GET the profile information for a specific user
+
 // POST create a new profile - /api/profiles
 // this request will be sent from the second part of the signup page (for talent)
 router.post("/", (req, res) => {

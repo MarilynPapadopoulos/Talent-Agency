@@ -295,12 +295,12 @@ router.put("/:id", (req, res) => {
 		});
 });
 
-// DELETE route to remove a user by id - /api/users/:id
+// DELETE route to remove a user by id - /api/users/
 // this request will be sent from the talent dashboard page
-router.delete("/:id", (req, res) => {
+router.delete("/", (req, res) => {
 	User.destroy({
 		where: {
-			id: req.params.id,
+			id: req.session.user_id,
 		},
 	})
 		.then((dbUserData) => {

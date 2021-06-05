@@ -8,6 +8,11 @@ router.get("/", (req, res) => {
 		res.redirect("/login");
 	}
 
+	// if it is an agent user trying to access, send them to the agent dashboard
+	if (req.session.role_id === 1) {
+		res.redirect("/agent");
+	}
+
 	res.render("talent-dashboard");
 });
 
@@ -17,6 +22,11 @@ router.get("/update", (req, res) => {
 	// if the user if not logged in, send them to the login page
 	if (!req.session.loggedIn) {
 		res.redirect("/login");
+	}
+
+	// if it is an agent user trying to access, send them to the agent dashboard
+	if (req.session.role_id === 1) {
+		res.redirect("/agent");
 	}
 
 	res.render("update-profile");
