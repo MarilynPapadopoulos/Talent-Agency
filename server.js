@@ -3,9 +3,6 @@ const path = require("path");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 
-// if we need to use helpers
-// const helpers = require("./utils/helpers")
-
 // initialize the app
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -32,6 +29,14 @@ app.use(session(sess));
 
 // require express-handlebars
 const hbs = exphbs.create({});
+
+// add a helper to validate equality
+hbs.handlebars.registerHelper("checkEqual", function (v1, v2, options) {
+	if (v1 === v2) {
+		return options.fn(this);
+	}
+	return options.inverse(this);
+});
 
 // set up express middleware
 app.use(express.json());

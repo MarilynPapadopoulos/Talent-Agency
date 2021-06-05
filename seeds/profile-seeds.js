@@ -2,7 +2,7 @@ const { Profile } = require("../models");
 
 const profileData = [
 	{
-		gender: "F",
+		gender: "female",
 		age: 24,
 		height: 175,
 		weight: 50,
@@ -18,7 +18,7 @@ const profileData = [
 		user_id: 1,
 	},
 	{
-		gender: "M",
+		gender: "male",
 		age: 28,
 		height: 185,
 		weight: 75,
@@ -34,7 +34,7 @@ const profileData = [
 		user_id: 2,
 	},
 	{
-		gender: "M",
+		gender: "male",
 		age: 32,
 		height: 180,
 		weight: 65,
@@ -47,7 +47,7 @@ const profileData = [
 		speak_italian: false,
 		speak_mandarin: true,
 		skills: "Underwater Welding",
-		user_id: 4,
+		user_id: 3,
 	},
 ];
 const seedProfiles = () => Profile.bulkCreate(profileData);
