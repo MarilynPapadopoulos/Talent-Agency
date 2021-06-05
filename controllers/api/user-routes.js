@@ -16,7 +16,6 @@ router.get("/session", (req, res) => {
 router.get("/", (req, res) => {
 	// access User model and run .findAll() method
 	User.findAll({
-		attributes: { exclude: ["password"] },
 		include: [
 			{
 				// include the role name
@@ -70,7 +69,6 @@ router.get("/talent", async (req, res) => {
 
 	// access User model and run .findAll() method
 	User.findAll({
-		attributes: { exclude: ["password"] },
 		where: {
 			role_id: talent_id,
 		},
@@ -124,7 +122,6 @@ router.get("/filtered", async (req, res) => {
 		});
 	// access User model and run .findAll() method
 	User.findAll({
-		attributes: { exclude: ["password"] },
 		where: {
 			role_id: talent_id,
 		},
@@ -183,7 +180,6 @@ router.get("/filtered", async (req, res) => {
 // GET one user by id - /api/users/:id
 router.get("/:id", (req, res) => {
 	User.findOne({
-		attributes: { exclude: ["password"] },
 		where: {
 			id: req.params.id,
 		},
@@ -239,7 +235,6 @@ router.post("/login", (req, res) => {
 		where: {
 			email: req.body.email,
 		},
-		attributes: { exclude: ["password"] },
 	})
 		.then((dbUserData) => {
 			if (!dbUserData) {

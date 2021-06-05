@@ -29,7 +29,6 @@ router.get("/", async (req, res) => {
 
 	// access User model and run .findAll() method
 	User.findAll({
-		attributes: { exclude: ["password"] },
 		where: {
 			role_id: talent_id,
 		},
@@ -75,6 +74,16 @@ router.get("/", async (req, res) => {
 
 // show the filtered dashboard
 router.get("*", async (req, res) => {
+	// if the user if not logged in, send them to the login page
+	if (!req.session.loggedIn) {
+		res.redirect("/login");
+	}
+
+	// if it is a talent user trying to access, send them to the talent dashboard
+	if (req.session.role_id === 2) {
+		res.redirect("/talent");
+	}
+
 	// get the id for "talent" in the Roles table
 	let talent_id;
 	await Role.findOne({
@@ -90,7 +99,6 @@ router.get("*", async (req, res) => {
 
 	// access User model and run .findAll() method
 	User.findAll({
-		attributes: { exclude: ["password"] },
 		where: {
 			role_id: talent_id,
 		},

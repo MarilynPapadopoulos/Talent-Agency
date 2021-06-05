@@ -47,7 +47,7 @@ const profileData = [
 		speak_italian: false,
 		speak_mandarin: true,
 		skills: "Underwater Welding",
-		user_id: 4,
+		user_id: 3,
 	},
 ];
 const seedProfiles = () => Profile.bulkCreate(profileData);
