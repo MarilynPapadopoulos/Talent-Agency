@@ -24,9 +24,9 @@ async function logoutHandler(event) {
 
 	// check the response status
 	if (response.ok) {
-		document.location.replace("/login");
+		document.location.replace("/");
 	} else {
-		document.location.replace("/login");
+		document.location.replace("/");
 		// alert(response.statusText);
 	}
 }
