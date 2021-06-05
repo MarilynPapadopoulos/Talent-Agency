@@ -31,6 +31,21 @@ router.get("/update", (req, res) => {
 		});
 });
 
+// route for a user to delete their profile & account
+router.get("/delete", (req, res) => {
+	// if the user if not logged in, send them to the login page
+	if (!req.session.loggedIn) {
+		res.redirect("/login");
+	}
+
+	// if it is an agent user trying to access, send them to the agent dashboard
+	if (req.session.role_id === 1) {
+		res.redirect("/agent");
+	}
+
+	res.render("delete-profile");
+});
+
 // route to show to talent dashboard
 router.get("/", (req, res) => {
 	// if the user if not logged in, send them to the login page

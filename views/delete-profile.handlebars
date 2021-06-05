@@ -5,7 +5,7 @@
 <div class="mb-3">
     <div class="row">
         <form class="col s12">
-            <img src="/images/logo.png" alt="TLNT logo">
+            <p style="text-align: center;"><b>Please confirm your<br> credentials to <br>delete your account.</b></p>
             <div class="row">
                 <div class="input-field col s12">
                     <input id="email" type="email" class="validate">
@@ -17,13 +17,15 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-primary" type="button" id="login-button">Login</button>
+                        <button class="btn btn-primary" type="button" id="login-button">Delete</button>
+                        <a href="/talent">
+                            <button class="btn btn-primary" type="button" id="login-button">Back</button>
+                        </a>
                     </div>
-                    <div class="signup">Not a Member?<a href="/signup">Signup</a></div>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-<script src="/javascript/login.js"></script>
+<script src="javascript/delete-user.js"></script>
