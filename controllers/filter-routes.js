@@ -59,11 +59,11 @@ router.get("/", async (req, res) => {
 		],
 	})
 		.then((dbUserData) => {
-			console.log(dbUserData);
+			console.log("DBUSERDATA", dbUserData);
 			const results = dbUserData.filter((user) => {
 				// console.log(user.dataValues.profile.dataValues);
 				let keepUser = false;
-				console.log(user);
+				console.log("USER", user);
 				const entries = Object.entries(user.dataValues.profile.dataValues);
 				// console.log(entries);
 				for (let i = 0; i < entries.length; i++) {
@@ -79,7 +79,7 @@ router.get("/", async (req, res) => {
 				}
 				return keepUser;
 			});
-			console.log(result);
+			console.log("RESULTS", results);
 
 			// serialize data
 			// const users = results.map((user) => user.get({ plain: true }));
