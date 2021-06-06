@@ -5,10 +5,12 @@ const apiRoutes = require("./api");
 const homeRoutes = require("./home-routes");
 const agentRoutes = require("./agent-dashboard-routes");
 const talentRoutes = require("./talent-dashboard-routes");
+const filterRoutes = require("./filter-routes");
 
 // set route paths
 router.use("/api", apiRoutes);
 router.use("/", homeRoutes);
+router.use("/filtered", filterRoutes);
 router.use("/agent", agentRoutes);
 router.use("/talent", talentRoutes);
 
