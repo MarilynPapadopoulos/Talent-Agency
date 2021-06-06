@@ -59,9 +59,11 @@ router.get("/", async (req, res) => {
 		],
 	})
 		.then((dbUserData) => {
+			console.log(dbUserData);
 			const results = dbUserData.filter((user) => {
 				// console.log(user.dataValues.profile.dataValues);
 				let keepUser = false;
+				console.log(user);
 				const entries = Object.entries(user.dataValues.profile.dataValues);
 				// console.log(entries);
 				for (let i = 0; i < entries.length; i++) {
