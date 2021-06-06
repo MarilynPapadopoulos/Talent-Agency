@@ -82,11 +82,11 @@ router.get("/", async (req, res) => {
 			console.log("RESULTS", results);
 
 			// serialize data
-			// const users = results.map((user) => user.get({ plain: true }));
+			const users = results.map((user) => user.get({ plain: true }));
 
-			res.json(results);
+			// res.json(results);
 
-			// res.render("filtered", { users, filters: req.query });
+			res.render("filtered", { users, filters: req.query });
 		})
 		.catch((err) => {
 			console.log(err);
