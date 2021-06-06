@@ -77,15 +77,14 @@ router.get("/", async (req, res) => {
 				}
 				return keepUser;
 			});
-			// console.log(result);
+			console.log(result);
 
 			// serialize data
-			const users = results.map((user) => user.get({ plain: true }));
+			// const users = results.map((user) => user.get({ plain: true }));
 
-			// res.json(results);
+			res.json(results);
 
 			// res.render("filtered", { users, filters: req.query });
-			res.render("filtered", { users });
 		})
 		.catch((err) => {
 			console.log(err);
