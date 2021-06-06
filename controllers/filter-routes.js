@@ -60,7 +60,16 @@ router.get("/", async (req, res) => {
 	})
 		.then((dbUserData) => {
 			console.log("DBUSERDATA", dbUserData);
-			const results = dbUserData.filter((user) => {
+			// filter out users that have null profile
+			const notNull = dbUserData.filter((user) => {
+				if (user.dataValues.profile === null) {
+					return false;
+				} else {
+					return true;
+				}
+			});
+
+			const results = notNull.filter((user) => {
 				// console.log(user.dataValues.profile.dataValues);
 				let keepUser = false;
 				console.log("USER", user);
