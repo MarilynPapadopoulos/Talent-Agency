@@ -30,6 +30,7 @@ Technologies used:
 - MySQL-Sequelize
 - Dotenv
 ## Sample Images 
+![Talent Homepage](https://user-images.githubusercontent.com/78708872/120928057-23f98c00-c6b1-11eb-94af-4e8043c5070f.PNG)
 
 ## Future Developments 
 - Add pictures to talent profiles 
