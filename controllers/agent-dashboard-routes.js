@@ -74,15 +74,15 @@ router.get("/", async (req, res) => {
 
 // show the filtered dashboard
 router.get("*", async (req, res) => {
-	// if the user if not logged in, send them to the login page
-	if (!req.session.loggedIn) {
-		res.redirect("/login");
-	}
+	// // if the user if not logged in, send them to the login page
+	// if (!req.session.loggedIn) {
+	// 	res.redirect("/login");
+	// }
 
-	// if it is a talent user trying to access, send them to the talent dashboard
-	if (req.session.role_id === 2) {
-		res.redirect("/talent");
-	}
+	// // if it is a talent user trying to access, send them to the talent dashboard
+	// if (req.session.role_id === 2) {
+	// 	res.redirect("/talent");
+	// }
 
 	// get the id for "talent" in the Roles table
 	let talent_id;
@@ -153,7 +153,9 @@ router.get("*", async (req, res) => {
 			// serialize data
 			const users = results.map((user) => user.get({ plain: true }));
 
-			res.render("filtered", { users, filters: req.query });
+			res.json(results);
+
+			// res.render("filtered", { users, filters: req.query });
 		})
 		.catch((err) => {
 			console.log(err);
