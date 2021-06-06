@@ -73,7 +73,7 @@ async function filterHandler(event) {
 		query = query.slice(0, query.length - 1);
 
 		// route the user to the appropriate route
-		document.location.replace(`/agent/filter?${query}`);
+		document.location.replace(`/agent?${query}`);
 	}
 }
 
