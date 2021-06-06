@@ -15,7 +15,7 @@ async function logoutHandler(event) {
 		});
 
 	// destroy the session
-	const response = fetch("/api/users/logout", {
+	const response = await fetch("/api/users/logout", {
 		method: "post",
 		headers: {
 			"Content-Type": "application/json",
@@ -24,9 +24,9 @@ async function logoutHandler(event) {
 
 	// check the response status
 	if (response.ok) {
-		document.location.replace("/");
+		document.location.replace("/login");
 	} else {
-		document.location.replace("/");
+		document.location.replace("/login");
 		// alert(response.statusText);
 	}
 }
