@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Role, Profile } = require("../models");
 
 // show the filtered dashboard
-router.get("*", async (req, res) => {
+router.get("/", async (req, res) => {
 	// // if the user if not logged in, send them to the login page
 	// if (!req.session.loggedIn) {
 	// 	res.redirect("/login");
