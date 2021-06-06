@@ -84,7 +84,8 @@ router.get("/", async (req, res) => {
 
 			// res.json(results);
 
-			res.render("filtered", { users, filters: req.query });
+			// res.render("filtered", { users, filters: req.query });
+			res.render("filtered", { users });
 		})
 		.catch((err) => {
 			console.log(err);
