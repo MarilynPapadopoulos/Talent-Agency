@@ -10,16 +10,20 @@
         <!--filter parameters-->
         <div class="row">
             <div class="input-field col s12">
-                    <select multiple>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                        <option value="3">Non-Binary</option>
-                    </select>
-                    <label>Gender</label>
-                </div>
+                <select id="gender">
+                    <option {{#checkEqual filters.gender "" }} selected {{/checkEqual}} value=""> - no filter -
+                    </option>
+                    <option{{#checkEqual filters.gender "male" }} selected {{/checkEqual}} value="male">Male</option>
+                        <option {{#checkEqual filters.gender "female" }} selected {{/checkEqual}} value="female">Female
+                        </option>
+                        <option {{#checkEqual filters.gender "other" }} selected {{/checkEqual}} value="other">
+                            Non-Binary</option>
+                </select>
+                <label>Gender</label>
+            </div>
 
             <div class="input-field col s12 ">
-                <input id="age" type="number" class="validate" {{#if filters.age}} value={{filters.age}}{{/if}}>
+                <input id="age" type="number" class="validate" {{#if filters.age}} value={{filters.age}} {{/if}}>
                 <label for="age">Age</label>
             </div>
 
@@ -36,16 +40,24 @@
             </div>
 
             <div class="input-field col s12">
-                    <select multiple>
-                        <option value="1">Brown</option>
-                        <option value="2">Blue</option>
-                        <option value="3">Green</option>
-                        <option value="4">Hazel</option>
-                        <option value="5">Gray</option>
-                        <option value="6">Amber</option>
-                    </select>
-                    <label>Eye Colour</label>
-                </div>
+                <select id="eye-colour">
+                    <option {{#checkEqual filters.eye_colour "" }} selected {{/checkEqual}} value=""> - no filter -
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "brown" }} selected {{/checkEqual}} value="brown">Brown
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "blue" }} selected {{/checkEqual}} value="blue">Blue
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "green" }} selected {{/checkEqual}} value="green">Green
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "hazel" }} selected {{/checkEqual}} value="hazel">Hazel
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "gray" }} selected {{/checkEqual}} value="gray">Gray
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "amber" }} selected {{/checkEqual}} value="amber">Amber
+                    </option>
+                </select>
+                <label>Eye Colour</label>
+            </div>
 
             <div class="input-field col s12">
                 <input id="hair-colour" type="text" class="validate" {{#if filters.hair_colour}}
@@ -104,45 +116,42 @@
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="button" id="filter-button">Filter</button>
             </div>
-    </div>
+        </div>
 
-    <!--result container-->
-    <div class="mb-3 filtered">
-        <h4>Results</h4>
-        <div class="row card-container">
-            <!--member cards-->
-            {{#each users as |user|}}
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="/images/logo.png">
+        <!--result container-->
+        <div class="mb-3 filtered">
+            <h4>Results</h4>
+            <div class="row card-container">
+                <!--member cards-->
+                {{#each users as |user|}}
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="/images/logo.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">{{user.first_name}}
+                            {{user.last_name}}<i class="material-icons right"></i></span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Profile Name<i
+                                class="material-icons right"></i></span>
+                        <p>click link below to email TLNT member</p>
+                        <p><a href="mailto:{{user.email}}">Profile Email</a></p>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{user.first_name}} {{user.last_name}}<i
-                            class="material-icons right"></i></span>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Profile Name<i
-                            class="material-icons right"></i></span>
-                    <p>click link below to email TLNT member</p>
-                    <p><a href="mailto:{{user.email}}">Profile Email</a></p>
-                </div>
+                {{/each}}
+
             </div>
-            {{/each}}
-
         </div>
     </div>
- <footer>
-        <p> Made by: Steven Maddison, Marilyn Papadopoulos, Lily Kim, Hardeep Kaur Aulakh, Jeff Grant</p>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems, {});
-        });
-    </script>
-    <!-- Materialize script link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, {});
+    });
+</script>
 
 <script src="/javascript/logout.js"></script>
 <script src="/javascript/filter.js"></script>
