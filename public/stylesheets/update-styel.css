@@ -9,7 +9,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-image: url("../images/delete-update.jpeg");
+	background-image: url("/images/delete-update.jpeg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
