@@ -1,31 +1,31 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    height:120vh;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 120vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-image: url("../images/talent-signup.jpeg");
+	background-image: url("/images/talent-signup.jpeg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 }
-.container-fluid{
+.container-fluid {
 	background: rgba(255, 255, 255, 0.7);
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    height:700px;
+	height: 700px;
 	width: 700px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 10px;
 	padding: 5px;
-    margin-top:5px;
-    margin-bottom:5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 /*logo style*/
@@ -45,19 +45,17 @@ h1 {
 	font-size: 2rem;
 	margin: 0rem;
 	font-family: "Mate SC", serif;
-    
 }
 .row {
 	margin-bottom: 0px;
 }
 /*text input style and spacing*/
 /* label focus color */
-label{
-    color:black;
+label {
+	color: black;
 }
 .input-field input[type="text"] + label {
 	color: black;
-    
 }
 
 /*materialize style*/
@@ -109,6 +107,3 @@ footer {
 	width: 100%;
 	text-align: left;
 }
-
-
-  

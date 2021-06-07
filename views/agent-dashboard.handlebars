@@ -10,8 +10,16 @@
         <!--filter parameters-->
         <div class="row">
             <div class="input-field col s12 ">
-                <input id="gender" type="text" class="validate">
-                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option {{#checkEqual filters.gender "" }} selected {{/checkEqual}} value=""> - no filter -
+                    </option>
+                    <option{{#checkEqual filters.gender "male" }} selected {{/checkEqual}} value="male">Male</option>
+                        <option {{#checkEqual filters.gender "female" }} selected {{/checkEqual}} value="female">Female
+                        </option>
+                        <option {{#checkEqual filters.gender "other" }} selected {{/checkEqual}} value="other">
+                            Non-Binary</option>
+                </select>
+                <label>Gender</label>
             </div>
 
             <div class="input-field col s12 ">
@@ -30,8 +38,23 @@
             </div>
 
             <div class="input-field col s12">
-                <input id="eye-colour" type="text" class="validate">
-                <label for="eye-colour">Eye Colour</label>
+                <select id="eye-colour">
+                    <option {{#checkEqual filters.eye_colour "" }} selected {{/checkEqual}} value=""> - no filter -
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "brown" }} selected {{/checkEqual}} value="brown">Brown
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "blue" }} selected {{/checkEqual}} value="blue">Blue
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "green" }} selected {{/checkEqual}} value="green">Green
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "hazel" }} selected {{/checkEqual}} value="hazel">Hazel
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "gray" }} selected {{/checkEqual}} value="gray">Gray
+                    </option>
+                    <option {{#checkEqual filters.eye_colour "amber" }} selected {{/checkEqual}} value="amber">Amber
+                    </option>
+                </select>
+                <label>Eye Colour</label>
             </div>
 
             <div class="input-field col s12">
@@ -61,22 +84,22 @@
             <form action="#">
                 <p>
                     <label class="radio">
-                        <input id="speaks-french" name="group1" type="checkbox"/>
+                        <input id="speaks-french" name="group1" type="checkbox" />
                         <span>Speaks French</span>
                     </label>
 
                     <label class="radio">
-                        <input id="speaks-spanish" name="group1" type="checkbox"/>
+                        <input id="speaks-spanish" name="group1" type="checkbox" />
                         <span>Speaks Spanish</span>
                     </label>
 
                     <label class="radio">
-                        <input id="speaks-italian" name="group1" type="checkbox"/>
+                        <input id="speaks-italian" name="group1" type="checkbox" />
                         <span>Speaks Italian</span>
                     </label>
 
                     <label class="radio">
-                        <input id="speaks-mandarin" name="group1" type="checkbox"/>
+                        <input id="speaks-mandarin" name="group1" type="checkbox" />
                         <span>Speaks Mandarin</span>
                     </label>
                 </p>
@@ -114,6 +137,13 @@
     </div>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, {});
+    });
+</script>
 
 <script src="/javascript/logout.js"></script>
 <script src="/javascript/filter.js"></script>

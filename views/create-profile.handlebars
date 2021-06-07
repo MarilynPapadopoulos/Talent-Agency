@@ -1,166 +1,151 @@
 <!--Bootstrap CDN-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <!--materialize CDN-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
-    <link rel="stylesheet" href="stylesheets/talent-signup.css">
+<!--materialize CDN-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="stylesheets/talent-signup.css">
 
 
 <div class="container-fluid">
-                <div class="row">
-	               
-			    <form class="form1"  action="" method="post">
-                    <img src="./assets/images/logo.png" alt="TLNT logo">
-                    <h1>Create Profile-Talent</h1>
+    <div class="row">
 
-                    <div class="row">
-                        <div class="input-field col">
-                            <input id="email" type="text" class="validate">
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
+        <form class="form1" action="" method="post">
+            <img src="/images/logo.png" alt="TLNT logo">
+            <h1>Create Profile - Talent</h1>
 
-	            <div class="row">
-                    <p>Please select your gender:</p>
-                    <form action="#">
-                        <p>
-                            <label class="radio">
-                                <input name="group1" type="radio" checked />
-                                <span>Male</span>
-                            </label>
-    
-                            <label class="radio">
-                                <input name="group1" type="radio" checked />
-                                <span>Female</span>
-                            </label>
-    
-                            <label class="radio">
-                                <input name="group1" type="radio" checked />
-                                <span>Other</span>
-                            </label>
-                        </p>
-                    </form>
-                </div>
+            <div class="row">
+                <p>Please select your gender:</p>
+                <form action="#">
+                    <p>
+                        <label class="radio">
+                            <input name="gender" type="radio" value="male"/>
+                            <span>Male</span>
+                        </label>
 
-                <div class="row">
-                        <div class="input-field col">
-                            <input id="age" type="text" class="validate">
-                            <label for="age">Age</label>
-                        </div>
-                </div>
+                        <label class="radio">
+                            <input name="gender" type="radio" value="female"/>
+                            <span>Female</span>
+                        </label>
 
-                <div class="row">
-                        <p>Please select your eye color:</p>
-                        <form action="#">
-                            <p>
-                                <label class="radio">
-                                    <input name="group2" type="radio" checked />
-                                    <span>Brown</span>
-                                </label>
-        
-                                <label class="radio">
-                                    <input name="group2" type="radio" checked />
-                                    <span>Hazel</span>
-                                </label>
-        
-                                <label class="radio">
-                                    <input name="group2" type="radio" checked />
-                                    <span>Blue</span>
-                                </label>
-
-                                <label class="radio">
-                                    <input name="group2" type="radio" checked />
-                                    <span>Green</span>
-                                </label>
-
-                                <label class="radio">
-                                    <input name="group2" type="radio" checked />
-                                    <span>Gray</span>
-                                </label>
-
-                                <label class="radio">
-                                    <input name="group2" type="radio" checked />
-                                    <span>Amber</span>
-                                </label>
-
-                                <label class="radio">
-                                    <input name="group2" type="radio" checked />
-                                    <span>Black</span>
-                                </label>
-                            </p>
-                        </form>    
-                    </div>
-
-                    <div class="row">
-                                <p>Languages Spoken</p>
-                            <form action="#">
-                                <p>
-                                    <label class="radio">
-                                        <input name="group3" type="radio" checked />
-                                        <span>French</span>
-                                    </label>
-            
-                                    <label class="radio">
-                                        <input name="group3" type="radio" checked />
-                                        <span>Spanish</span>
-                                    </label>
-            
-                                    <label class="radio">
-                                        <input name="group3" type="radio" checked />
-                                        <span>Italian</span>
-                                    </label>
-            
-                                    <label class="radio">
-                                        <input name="group3" type="radio" checked />
-                                        <span>Mandarin</span>
-                                    </label>
-                                </p>
-                            </form>
-                        </div>
-
-                        
-                            <div class="input-field col">
-                                <input id="height" type="text" class="validate">
-                                <label for="height">Height</label>
-                            </div>
-
-                            <div class="input-field col">
-                                <input id="weight" type="text" class="validate">
-                                <label for="weight">Weight</label>
-                            </div>
-                      
-                        
-
-                        <div class="input-field col">
-                            <input id="hair-colour" type="text" class="validate">
-                            <label for="hair-colour">Hair Colour</label>
-                        </div>
-        
-                        <div class="input-field col">
-                            <input id="size" type="text" class="validate">
-                            <label for="size">Size</label>
-                        </div>
-        
-                        <div class="input-field col">
-                            <input id="complexion" type="text" class="validate">
-                            <label for="complexion">Complexion</label>
-                        </div>
-
-                        <div class="row">
-                        <div class="input-field col">
-                            <input id="skills" type="text" class="validate">
-                            <label for="skills">Skills</label>
-                        </div>
-                        </div>
-
-                        <!--button-->
-                        <div class="d-grid gap-2 col-6 mx-auto">
-                            <button class="btn btn-primary" id="signup-form" type="submit">Submit</button>
-                        </div>
+                        <label class="radio">
+                            <input name="gender" type="radio" value="other"/>
+                            <span>Other</span>
+                        </label>
+                    </p>
                 </form>
-                
-        </div>
-        </div>
+            </div>
 
-  
-        <script src="/javascript/create-profile.js"></script>
+            <div class="row">
+                <div class="input-field col">
+                    <input id="age" type="text" class="validate">
+                    <label for="age">Age</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <p>Please select your eye color:</p>
+                <form action="#">
+                    <p>
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="brown"/>
+                            <span>Brown</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="hazel"/>
+                            <span>Hazel</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="blue"/>
+                            <span>Blue</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="green"/>
+                            <span>Green</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="gray"/>
+                            <span>Gray</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="amber"/>
+                            <span>Amber</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+
+            <div class="row">
+                <p>Languages Spoken</p>
+                <form action="#">
+                    <p>
+                        <label class="radio">
+                            <input name="language" type="checkbox" id="french"/>
+                            <span>French</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="language" type="checkbox" id="spanish"/>
+                            <span>Spanish</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="language" type="checkbox" id="italian"/>
+                            <span>Italian</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="language" type="checkbox" id="mandarin"/>
+                            <span>Mandarin</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+
+            <div class="input-field col">
+                <input id="height" type="text" class="validate">
+                <label for="height">Height</label>
+            </div>
+
+            <div class="input-field col">
+                <input id="weight" type="text" class="validate">
+                <label for="weight">Weight</label>
+            </div>
+
+            <div class="input-field col">
+                <input id="hair-color" type="text" class="validate">
+                <label for="hair-color">Hair Colour</label>
+            </div>
+
+            <div class="input-field col">
+                <input id="size" type="text" class="validate">
+                <label for="size">Size</label>
+            </div>
+
+            <div class="input-field col">
+                <input id="complexion" type="text" class="validate">
+                <label for="complexion">Complexion</label>
+            </div>
+
+            <div class="row">
+                <div class="input-field col">
+                    <input id="skills" type="text" class="validate">
+                    <label for="skills">Skills</label>
+                </div>
+            </div>
+
+            <!--button-->
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" id="create-profile-button" type="submit">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<script src="/javascript/create-profile.js"></script>
