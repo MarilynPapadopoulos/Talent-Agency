@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS talent_db;
+
+CREATE DATABASE talent_db;

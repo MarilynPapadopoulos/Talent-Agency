@@ -1,0 +1,31 @@
+<!--materialize CDN-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/stylesheets/login-style.css">
+
+<div class="mb-3">
+    <div class="row">
+        <form class="col s12">
+            <p style="text-align: center;"><b>Please confirm your<br> credentials to <br>delete your account.</b></p>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email" class="label">Email</label>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate">
+                            <label for="password" class="label">Password</label>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-primary" type="button" id="delete-button">Delete</button>
+                        <a href="/talent">
+                            <button class="btn btn-primary" type="button" id="login-button">Back</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/javascript/delete-user.js"></script>

@@ -1,0 +1,154 @@
+<!--Bootstrap CDN-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!--materialize CDN-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/stylesheets/talent-signup.css">
+
+<div class="container-fluid">
+    <div class="row">
+
+        <form class="form1" action="" method="post">
+            <img src="/images/logo.png" alt="TLNT logo">
+            <button class="nav-pills" type="submit" id="signout-button" >Sign Out</button>
+            <h1>Create Profile - Talent</h1>
+
+            <div class="row">
+                <p>Please select your gender:</p>
+                <form action="#">
+                    <p>
+                        <label class="radio">
+                            <input name="gender" type="radio" value="male" {{#checkEqual
+                            profile.gender "male" }} checked {{/checkEqual}}/>
+                            <span>Male</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="gender" type="radio" value="female" {{#checkEqual
+                            profile.gender "female" }} checked {{/checkEqual}}/>
+                            <span>Female</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="gender" type="radio" value="other" {{#checkEqual
+                            profile.gender "other" }} checked {{/checkEqual}}/>
+                            <span>Other</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="input-field col">
+                    <input id="age" type="text" class="validate" value="{{profile.age}}">
+                    <label for="age">Age</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <p>Please select your eye color:</p>
+                <form action="#">
+                    <p>
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="brown" {{#checkEqual profile.eye_colour "brown" }} checked {{/checkEqual}}/>
+                            <span>Brown</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="hazel" {{#checkEqual profile.eye_colour "hazel" }} checked {{/checkEqual}}/>
+                            <span>Hazel</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="blue" {{#checkEqual profile.eye_colour "blue" }} checked {{/checkEqual}}/>
+                            <span>Blue</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="green" {{#checkEqual profile.eye_colour "green" }} checked {{/checkEqual}}/>
+                            <span>Green</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="gray" {{#checkEqual profile.eye_colour "gray" }} checked {{/checkEqual}}/>
+                            <span>Gray</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="eyecolor" type="radio" value="amber" {{#checkEqual profile.eye_colour "amber" }} checked {{/checkEqual}}/>
+                            <span>Amber</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+
+            <div class="row">
+                <p>Languages Spoken</p>
+                <form action="#">
+                    <p>
+                        <label class="radio">
+                            <input name="language" type="checkbox" id="french" {{#checkEqual profile.speak_french true }} checked {{/checkEqual}}/>
+                            <span>French</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="language" type="checkbox" id="spanish" {{#checkEqual profile.speak_spanish true }} checked {{/checkEqual}}/>
+                            <span>Spanish</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="language" type="checkbox" id="italian" {{#checkEqual profile.speak_italian true }} checked {{/checkEqual}}/>
+                            <span>Italian</span>
+                        </label>
+
+                        <label class="radio">
+                            <input name="language" type="checkbox" id="mandarin" {{#checkEqual profile.speak_mandarin true }} checked {{/checkEqual}}/>
+                            <span>Mandarin</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+
+            <div class="input-field col">
+                <input id="height" type="text" class="validate" value="{{profile.height}}">
+                <label for="height" >Height</label>
+            </div>
+
+            <div class="input-field col">
+                <input id="weight" type="text" class="validate" value="{{profile.weight}}">
+                <label for="weight">Weight</label>
+            </div>
+
+            <div class="input-field col">
+                <input id="hair-color" type="text" class="validate" value="{{profile.hair_colour}}">
+                <label for="hair-color">Hair Colour</label>
+            </div>
+
+            <div class="input-field col">
+                <input id="size" type="text" class="validate" value="{{profile.size}}">
+                <label for="size">Size</label>
+            </div>
+
+            <div class="input-field col">
+                <input id="complexion" type="text" class="validate" value="{{profile.complexion}}">
+                <label for="complexion">Complexion</label>
+            </div>
+
+            <div class="row">
+                <div class="input-field col">
+                    <input id="skills" type="text" class="validate" value="{{profile.skills}}">
+                    <label for="skills">Skills</label>
+                </div>
+            </div>
+
+            <!--button-->
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" id="update-profile-button" type="submit">Update</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script src="/javascript/update-user.js"></script>
+<script src="/javascript/logout.js"></script>
