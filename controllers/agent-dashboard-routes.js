@@ -140,6 +140,7 @@ router.get("*", async (req, res) => {
 					if (req.query[currentEntry[0]]) {
 						if (req.query[currentEntry[0]] === currentEntry[1].toString()) {
 							keepUser = true;
+							console.log('current entries', currentEntry);
 						} else {
 							keepUser = false;
 							return keepUser;
